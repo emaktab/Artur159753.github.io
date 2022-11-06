@@ -1,0 +1,91 @@
+.A{
+    list-style-type: disc;
+    background-image: linear-gradient(red,yellow);
+    border-style: solid;
+}
+.a{
+    text-decoration: none;
+    border-style: solid;
+    background-image: linear-gradient(yellow,red);
+    border-radius: 99px;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+a:hover{
+    background-image: linear-gradient(rgb(126, 126, 0),rgb(126, 0, 0));
+    font-size: 35px;
+}
+li{
+    display: inline;
+}
+body{
+    background: url(1659720782_7-funart-pro-p-fon-dlya-fotoshopa-realistichnii-krasivo-7.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+}
+.AA{
+    font-family: Propisi;
+    text-decoration: none;
+    border-style: solid;
+    background-image: linear-gradient(yellow,red);
+    border-radius: 99px;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+} 
+#saytbar{
+    display: inline-block;
+    height: 500px;
+    width: 50px;
+    border-style: solid;
+    padding: 20px;
+    vertical-align: top;
+}
+.Q{
+    display: inline-block;
+    padding: 20px;
+    vertical-align: top;
+    height: 500px;
+    width: 970px;
+}
+.Vipodaet-eto{
+    display: none;
+    position: absolute;
+    background-color: linear-gradient(yellow,red);
+    min-width: 160;
+    z-index: 1;
+}
+.Vipodaet:hover .Vipodaet-eto{
+    display: block;
+}
+.Vipodaet{
+    display: inline-block;
+}
+table{
+    text-decoration: none;
+    border-style: solid;
+    background-image: linear-gradient(red,yellow);
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+th{
+    text-decoration: none;
+    border-style: solid;
+    background-image: linear-gradient(yellow,red);
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+#AaA:hover{
+    background-color: rgb(255, 166, 0);
+    transform: rotate(360deg);
+    width: 200px;
+    height: 200px;
+}
+#AaA{
+    transition: transform 2s;
+    background-color: red;
+    background-color: transform 2s;
+    width: 100px;
+    height: 100px;
+    transition: transform 2s, background-color 2s, height 2s, width 2s;
+}
