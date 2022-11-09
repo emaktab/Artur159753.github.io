@@ -88,5 +88,12 @@ th{
     background-color: transform 2s;
     width: 100px;
     height: 100px;
+    font-family: 'Anton', sans-serif;
     transition: transform 2s, background-color 2s, height 2s, width 2s;
+}
+#a{
+    font-family: 'Caveat', cursive;
+}
+#AAA{
+    font-family: 'Homemade Apple', cursive;
 }
