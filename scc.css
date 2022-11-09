@@ -10,6 +10,7 @@
     border-radius: 99px;
     color: rgb(255, 255, 255);
     font-size: 30px;
+    transition: 0.3s;
 }
 a:hover{
     background-image: linear-gradient(rgb(126, 126, 0),rgb(126, 0, 0));
@@ -33,6 +34,7 @@ body{
     border-radius: 99px;
     color: rgb(255, 255, 255);
     font-size: 30px;
+    transition: 0.3s;
 } 
 #saytbar{
     display: inline-block;
@@ -81,18 +83,19 @@ th{
     transform: rotate(360deg);
     width: 200px;
     height: 200px;
+    font-size: 30px;
 }
 #AaA{
     transition: transform 2s;
     background-color: red;
-    background-color: transform 2s;
     width: 100px;
     height: 100px;
-    font-family: 'Anton', sans-serif;
-    transition: transform 2s, background-color 2s, height 2s, width 2s;
+    font-family: 'Rubik Bubbles', cursive;
+    transition: transform 2s, background-color 2s, height 2s, width 2s, font-size 2s;
 }
 #a{
     font-family: 'Caveat', cursive;
+    background-image: linear-gradient(red,yellow);
 }
 #AAA{
     font-family: 'Homemade Apple', cursive;
