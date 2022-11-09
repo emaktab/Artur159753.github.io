@@ -24,7 +24,7 @@ body{
     background: url(1659720782_7-funart-pro-p-fon-dlya-fotoshopa-realistichnii-krasivo-7.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-
+    text-align: center;
 }
 .AA{
     font-family: Propisi;
@@ -99,4 +99,10 @@ th{
 }
 #AAA{
     font-family: 'Homemade Apple', cursive;
+}
+.Cent{
+    text-align: center;
+}
+.index{
+    width: max-content;
 }
