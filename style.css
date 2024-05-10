@@ -71,13 +71,31 @@ main {
     border-radius: 10px;
 }
 
-.video-info h2 {
-    margin-top: 0;
-    color: #fff;
+.channel-info {
+    display: flex;
+    align-items: center;
 }
 
-.fake-buttons {
-    margin-top: 10px;
+.channel-info img {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.channel-info p {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.channel-info button {
+    margin-left: auto;
+    padding: 5px 10px;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 20px;
 }
 
 .fake-buttons button {
@@ -98,19 +116,3 @@ footer {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-/* Остальные стили остаются без изменений */
-
-.channel-info p {
-    margin: 0; /* Убираем отступы у параграфа */
-    flex-grow: 1; /* Расширяем имя канала на всю доступную ширину, чтобы оно занимало всё свободное пространство */
-}
-
-
-.channel-info p {
-    margin: 0; /* Убираем отступы у параграфа */
-}
-
-.channel-info button {
-    margin-left: auto; /* Помещаем кнопку справа от остальных элементов */
-}
-
