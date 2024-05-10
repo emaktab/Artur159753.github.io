@@ -98,3 +98,23 @@ footer {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+/* Остальные стили остаются без изменений */
+
+.channel-info {
+    display: flex;
+    align-items: center;
+}
+
+.channel-info img {
+    margin-right: 10px;
+}
+
+.channel-info button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 20px;
+}
