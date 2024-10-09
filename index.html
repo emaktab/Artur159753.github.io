@@ -26,26 +26,6 @@
             z-index: 2;
         }
 
-        /* Анимация печатания текста */
-        header h1 {
-            font-size: 2.5em;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: .15em solid #00ff00;
-            width: 0;
-            animation: typing 3s steps(30, end) forwards, blink-caret .75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #00ff00; }
-        }
-
         /* Навигация */
         nav {
             margin-top: 20px;
@@ -168,6 +148,33 @@
             overflow: hidden;
             z-index: 0;
         }
+
+        /* Эффект печатания */
+        .typewriter {
+            display: inline-block;
+            border-right: .15em solid #00ff00;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00ff00; }
+        }
+
+        /* Применяем анимацию печатания к элементам с классом typewriter */
+        .typewriter-effect {
+            display: inline-block;
+            overflow: hidden;
+            border-right: .15em solid #00ff00;
+            white-space: nowrap;
+            animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+        }
     </style>
 </head>
 <body>
@@ -176,7 +183,7 @@
     <div id="background"></div>
 
     <header>
-        <h1>Добро пожаловать на мой сайт!</h1>
+        <h1 class="typewriter-effect">Добро пожаловать на мой сайт!</h1>
         <nav>
             <a href="#about">Обо мне</a>
             <a href="#skills">Навыки</a>
@@ -186,37 +193,37 @@
     </header>
 
     <section id="about">
-        <h2>Обо мне</h2>
-        <p>Привет! Меня зовут Хамраев Артур. Я начинающий программист, и я изучал программирование, начиная с HTML, CSS и JavaScript. Я использовал все эти технологии для создания веб-сайтов и приложений. В моих проектах я стремлюсь применять лучшие практики и создавать качественный код.</p>
+        <h2 class="typewriter-effect">Обо мне</h2>
+        <p class="typewriter-effect">Привет! Меня зовут Хамраев Артур. Я начинающий программист, и я изучал программирование, начиная с HTML, CSS и JavaScript. Я использовал все эти технологии для создания веб-сайтов и приложений. В моих проектах я стремлюсь применять лучшие практики и создавать качественный код.</p>
     </section>
 
     <section id="skills">
-        <h2>Навыки</h2>
+        <h2 class="typewriter-effect">Навыки</h2>
         <ul>
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>JavaScript</li>
-            <li>Основы веб-дизайна</li>
-            <li>Unity (C#)</li>
-            <li>Python</li>
+            <li class="typewriter-effect">HTML5</li>
+            <li class="typewriter-effect">CSS3</li>
+            <li class="typewriter-effect">JavaScript</li>
+            <li class="typewriter-effect">Основы веб-дизайна</li>
+            <li class="typewriter-effect">Unity (C#)</li>
+            <li class="typewriter-effect">Python</li>
         </ul>
     </section>
 
     <section id="projects">
-        <h2>Проекты</h2>
-        <p>Я работал над несколькими проектами, включая:</p>
+        <h2 class="typewriter-effect">Проекты</h2>
+        <p class="typewriter-effect">Я работал над несколькими проектами, включая:</p>
         <ul>
-            <li>Личный сайт (как этот!)</li>
-            <li>Веб-приложение для заметок</li>
-            <li>Игры на JavaScript</li>
-            <li>Игры на Unity</li>
-            <li>Игры, программы и боты на Python</li>
+            <li class="typewriter-effect">Личный сайт (как этот!)</li>
+            <li class="typewriter-effect">Веб-приложение для заметок</li>
+            <li class="typewriter-effect">Игры на JavaScript</li>
+            <li class="typewriter-effect">Игры на Unity</li>
+            <li class="typewriter-effect">Игры, программы и боты на Python</li>
         </ul>
     </section>
 
     <section id="contact">
-        <h2>Контакты</h2>
-        <p>Вы можете связаться со мной через социальные сети:</p>
+        <h2 class="typewriter-effect">Контакты</h2>
+        <p class="typewriter-effect">Вы можете связаться со мной через социальные сети:</p>
         <div class="social-links">
             <a href="https://discord.gg/RyvQ6aSgc7" target="_blank">
                 <img src="https://img.icons8.com/?size=512&id=30998&format=png" alt="Discord">
@@ -231,13 +238,41 @@
     </section>
 
     <footer>
-        <p>© 2024 Хамраев Артур. Все права защищены.</p>
+        <p class="typewriter-effect">© 2024 Хамраев Артур. Все права защищены.</p>
     </footer>
 
     <!-- Кастомный курсор -->
     <div class="custom-cursor" id="customCursor"></div>
 
     <script>
+        // Функция для эффекта печатания
+        function typeWriter(element, speed = 50) {
+            const text = element.textContent;
+            element.textContent = '';
+            element.classList.remove('typewriter-effect');
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.classList.remove('typewriter-effect');
+                }
+            }
+            type();
+        }
+
+        // Применяем эффект печатания ко всем элементам с классом typewriter-effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.typewriter-effect');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    typeWriter(el, 30);
+                }, index * 300); // Задержка между элементами
+            });
+        });
+
         // Кастомный курсор и следы
         const cursor = document.getElementById('customCursor');
 
@@ -295,9 +330,7 @@
                 }
             });
         });
-
-        // Анимация печатания текста уже реализована через CSS
-
     </script>
+
 </body>
 </html>
