@@ -167,13 +167,35 @@
             50% { border-color: #00ff00; }
         }
 
-        /* Применяем анимацию печатания к элементам с классом typewriter */
+        /* Применяем анимацию печатания к элементам с классом typewriter-effect */
         .typewriter-effect {
             display: inline-block;
             overflow: hidden;
             border-right: .15em solid #00ff00;
             white-space: nowrap;
             animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        /* Стили для иконок в навыках */
+        .skill-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            opacity: 0; /* Начальная невидимость для анимации */
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .skill-item img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        /* Анимация появления навыков */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -200,12 +222,26 @@
     <section id="skills">
         <h2 class="typewriter-effect">Навыки</h2>
         <ul>
-            <li class="typewriter-effect">HTML5</li>
-            <li class="typewriter-effect">CSS3</li>
-            <li class="typewriter-effect">JavaScript</li>
-            <li class="typewriter-effect">Основы веб-дизайна</li>
-            <li class="typewriter-effect">Unity (C#)</li>
-            <li class="typewriter-effect">Python</li>
+            <li class="skill-item typewriter-effect">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png" alt="HTML5">
+                HTML5
+            </li>
+            <li class="skill-item typewriter-effect">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="CSS3">
+                CSS3
+            </li>
+            <li class="skill-item typewriter-effect">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript">
+                JavaScript
+            </li>
+            <li class="skill-item typewriter-effect">
+                <img src="https://upload.wikimedia.org/wikipedia/ru/a/a3/Unity_Logo.png" alt="Unity">
+                Unity (C#)
+            </li>
+            <li class="skill-item typewriter-effect">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python">
+                Python
+            </li>
         </ul>
     </section>
 
@@ -269,7 +305,7 @@
             elements.forEach((el, index) => {
                 setTimeout(() => {
                     typeWriter(el, 30);
-                }, index * 300); // Задержка между элементами
+                }, index * 100); // Задержка между элементами
             });
         });
 
