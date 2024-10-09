@@ -9,16 +9,18 @@
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
             padding: 0;
-            background-color: #000;
-            color: #00ff00; /* Хакерский цвет текста */
+            background-color: #1e1e1e;
+            color: #00ff00; /* Хакерский зеленый цвет */
             overflow: hidden;
+            position: relative;
         }
         header {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #00ff00;
+            background-color: #ff4d4d;
+            color: white;
             padding: 20px 0;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
         nav {
             margin: 20px 0;
@@ -26,29 +28,25 @@
         nav a {
             margin: 0 15px;
             text-decoration: none;
-            color: #00ff00;
+            color: #00ff00; /* Хакерский зеленый цвет */
             font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ff00ff; /* Цвет при наведении */
         }
         section {
             padding: 20px;
             margin: 10px;
-            background: rgba(0, 0, 0, 0.7);
+            background: #2a2a2a;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         footer {
             text-align: center;
             padding: 20px 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #00ff00;
+            background-color: #ff4d4d;
+            color: white;
             position: relative;
             bottom: 0;
             width: 100%;
-            box-shadow: 0 -2px 5px rgba(0, 255, 0, 0.5);
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
         }
         .social-links {
             margin: 10px 0;
@@ -62,43 +60,42 @@
         .social-links img:hover {
             transform: scale(1.1);
         }
-
-        /* Кастомный курсор */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(0, 255, 0, 0.7);
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s;
-        }
-
-        /* Эффект матрицы */
-        @keyframes matrix {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        .matrix-effect {
+        /* Курсор */
+        #cursor {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            color: #00ff00;
-            font-size: 10px;
-            white-space: nowrap;
-            overflow: hidden;
+            width: 15px;
+            height: 15px;
+            background-color: rgba(0, 255, 0, 0.7); /* Цвет курсора */
+            border-radius: 50%;
+            pointer-events: none; /* Не мешает кликам */
+            transition: transform 0.2s;
+            transform: translate(-50%, -50%); /* Центрирование */
+        }
+        .trail {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(0, 255, 0, 0.5);
+            border-radius: 50%;
             pointer-events: none;
-            animation: matrix 0.5s infinite;
+            animation: fade 0.5s forwards;
+        }
+        @keyframes fade {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1 style="font-size: 2.5em; font-weight: bold; letter-spacing: 2px;">Добро пожаловать на мой сайт!</h1>
+    <h1 style="font-size: 2em;">Добро пожаловать на мой сайт!</h1>
     <nav>
         <a href="#about">Обо мне</a>
         <a href="#skills">Навыки</a>
@@ -156,38 +153,76 @@
     <p>© 2024 Хамраев Артур. Все права защищены.</p>
 </footer>
 
-<div class="matrix-effect"></div>
-
-<div class="cursor"></div>
+<div id="cursor"></div>
 
 <script>
-    // Пример простой функции на JavaScript
-    function showAlert() {
-        alert('Спасибо за посещение моего сайта!');
-    }
-    
-    // Вызов функции при загрузке страницы
-    window.onload = function() {
-        showAlert();
-    };
+    const cursor = document.getElementById('cursor');
 
-    // Кастомизация курсора
-    const cursor = document.querySelector('.cursor');
     document.addEventListener('mousemove', (e) => {
-        cursor.style.left = `${e.pageX}px`;
-        cursor.style.top = `${e.pageY}px`;
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+
+        // Создаем след
+        const trail = document.createElement('div');
+        trail.className = 'trail';
+        document.body.appendChild(trail);
+        trail.style.left = e.pageX + 'px';
+        trail.style.top = e.pageY + 'px';
+
+        // Удаляем след через 0.5 секунды
+        setTimeout(() => {
+            trail.remove();
+        }, 500);
     });
 
-    // Создание эффекта матрицы
-    function createMatrixEffect() {
-        const matrixDiv = document.querySelector('.matrix-effect');
-        let text = '';
-        for (let i = 0; i < 300; i++) {
-            text += Math.random() < 0.5 ? '1' : '0';
-        }
-        matrixDiv.innerHTML = text;
-    }
-    setInterval(createMatrixEffect, 1000);
+    // Прятать стандартный курсор
+    document.body.style.cursor = 'none';
+
+    // Анимация фоновых элементов
+    const bgElements = [];
+    const createBgElement = (x, y) => {
+        const bgElement = document.createElement('div');
+        bgElement.className = 'bg-element';
+        bgElement.style.position = 'absolute';
+        bgElement.style.width = '10px';
+        bgElement.style.height = '10px';
+        bgElement.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
+        bgElement.style.borderRadius = '50%';
+        bgElement.style.left = `${x}px`;
+        bgElement.style.top = `${y}px`;
+        document.body.appendChild(bgElement);
+        bgElements.push(bgElement);
+
+        // Движение к курсору
+        const moveToCursor = () => {
+            const mouseX = cursor.offsetLeft + cursor.offsetWidth / 2;
+            const mouseY = cursor.offsetTop + cursor.offsetHeight / 2;
+
+            const dx = mouseX - parseInt(bgElement.style.left);
+            const dy = mouseY - parseInt(bgElement.style.top);
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 50) {
+                bgElement.style.left = parseInt(bgElement.style.left) + (dx / dist) * 5 + 'px';
+                bgElement.style.top = parseInt(bgElement.style.top) + (dy / dist) * 5 + 'px';
+            }
+
+            requestAnimationFrame(moveToCursor);
+        };
+        moveToCursor();
+
+        // Удаляем элемент через 3 секунды
+        setTimeout(() => {
+            bgElement.remove();
+        }, 3000);
+    };
+
+    // Создание элементов фона
+    setInterval(() => {
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
+        createBgElement(x, y);
+    }, 1000);
 </script>
 
 </body>
