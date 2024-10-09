@@ -1,49 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Clone</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Мой Личный Сайт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #ff4d4d;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>YouTube</h1>
-            <div class="search-bar">
-                <input type="text" placeholder="Введите запрос">
-                <button>Поиск</button>
-            </div>
-        </div>
-    </header>
-    <main>
-        <div class="container">
-            <div class="video-wrapper">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/X6oLpVDRA54" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">
-                <div class="channel-info">
-                    <img src="https://yt3.googleusercontent.com/nxitFB_AemuwQbahdj3GJ4xPlme7jWiIVeXqoNzjKjoTZysNCoffZp5tbEBhdTT9uiEtQShNlA=s176-c-k-c0x00ffffff-no-rj" alt="Аватарка канала" style="border-radius: 50%; width: 32px; height: 32px;">
-                    <p style="margin: 0; flex-grow: 1;">Deadly Place (𝓐𝓻𝓽𝓾𝓻)</p>
-                    <button>Подписаться</button>
-                </div>
-                <h2>КАК СДЕЛАТЬ ПЛАВНЫЙ ВВОД ТЕКСТА В VS CODE</h2>
-                <div id="redux-video-stats" redux-url-check="?v=X6oLpVDRA54&amp;t=50s">
-                    <p>10 просмотров • 25 апр. 2024 г.</p>
-                    <div class="fake-buttons">
-                        <button>👍 1000</button>
-                        <button>👎 20</button>
-                        <button>Поделиться</button>
-                        <button>Сохранить</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <div class="container">
-            <p>© 2024 YouTube Clone</p>
-        </div>
-    </footer>
+
+<header>
+    <h1>Добро пожаловать на мой сайт!</h1>
+    <nav>
+        <a href="#about">Обо мне</a>
+        <a href="#skills">Навыки</a>
+        <a href="#projects">Проекты</a>
+        <a href="#contact">Контакты</a>
+    </nav>
+</header>
+
+<section id="about">
+    <h2>Обо мне</h2>
+    <p>Привет! Меня зовут Хамраев Артур. Я начинающий программист, и я изучал программирование, начиная с HTML, CSS и JavaScript. Я использовал все эти технологии для создания веб-сайтов и приложений. В моих проектах я стремлюсь применять лучшие практики и создавать качественный код.</p>
+</section>
+
+<section id="skills">
+    <h2>Навыки</h2>
+    <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>Основы веб-дизайна</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>Проекты</h2>
+    <p>Я работал над несколькими проектами, включая:</p>
+    <ul>
+        <li>Личный сайт (как этот!)</li>
+        <li>Веб-приложение для заметок</li>
+        <li>Игры на JavaScript</li>
+    </ul>
+</section>
+
+<section id="contact">
+    <h2>Контакты</h2>
+    <p>Вы можете связаться со мной по электронной почте: <a href="mailto:example@example.com">example@example.com</a></p>
+</section>
+
+<footer>
+    <p>© 2024 Хамраев Артур. Все права защищены.</p>
+</footer>
+
+<script>
+    // Пример простой функции на JavaScript
+    function showAlert() {
+        alert('Спасибо за посещение моего сайта!');
+    }
+    
+    // Вызов функции при загрузке страницы
+    window.onload = function() {
+        showAlert();
+    };
+</script>
+
 </body>
 </html>
