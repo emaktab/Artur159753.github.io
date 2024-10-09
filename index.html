@@ -5,225 +5,299 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мой Личный Сайт</title>
     <style>
+        /* Основные стили */
         body {
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
             padding: 0;
-            background-color: #1e1e1e;
+            background-color: #000;
             color: #00ff00; /* Хакерский зеленый цвет */
-            overflow: hidden;
+            overflow: auto; /* Разрешаем прокрутку */
             position: relative;
         }
+
+        /* Стили хедера */
         header {
-            background-color: #ff4d4d;
-            color: white;
-            padding: 20px 0;
+            background-color: #111;
+            color: #00ff00;
+            padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             position: relative;
+            z-index: 2;
         }
+
+        /* Анимация печатания текста */
+        header h1 {
+            font-size: 2.5em;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: .15em solid #00ff00;
+            width: 0;
+            animation: typing 3s steps(30, end) forwards, blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00ff00; }
+        }
+
+        /* Навигация */
         nav {
-            margin: 20px 0;
+            margin-top: 20px;
         }
+
         nav a {
             margin: 0 15px;
             text-decoration: none;
-            color: #00ff00; /* Хакерский зеленый цвет */
+            color: #00ff00;
             font-weight: bold;
+            transition: color 0.3s;
         }
+
+        nav a:hover {
+            color: #ff00ff; /* Цвет при наведении */
+        }
+
+        /* Секции */
         section {
             padding: 20px;
-            margin: 10px;
-            background: #2a2a2a;
+            margin: 10px 20px;
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            position: relative;
+            z-index: 2;
         }
+
+        /* Стили футера */
         footer {
             text-align: center;
             padding: 20px 0;
-            background-color: #ff4d4d;
-            color: white;
+            background-color: #111;
+            color: #00ff00;
             position: relative;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 2;
         }
+
+        /* Социальные ссылки */
         .social-links {
             margin: 10px 0;
         }
+
         .social-links img {
             width: 40px;
             height: 40px;
             margin: 0 10px;
             transition: transform 0.3s;
         }
+
         .social-links img:hover {
             transform: scale(1.1);
         }
-        /* Курсор */
-        #cursor {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: rgba(0, 255, 0, 0.7); /* Цвет курсора */
+
+        /* Кастомный курсор */
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 255, 0, 0.7);
             border-radius: 50%;
-            pointer-events: none; /* Не мешает кликам */
-            transition: transform 0.2s;
-            transform: translate(-50%, -50%); /* Центрирование */
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, background 0.3s ease;
+            z-index: 9999;
         }
+
+        /* Следы курсора */
         .trail {
-            position: absolute;
+            position: fixed;
             width: 10px;
             height: 10px;
-            background-color: rgba(0, 255, 0, 0.5);
+            background: rgba(0, 255, 0, 0.5);
             border-radius: 50%;
             pointer-events: none;
             animation: fade 0.5s forwards;
+            z-index: 9998;
         }
+
         @keyframes fade {
-            0% {
+            from {
                 transform: scale(1);
                 opacity: 1;
             }
-            100% {
+            to {
                 transform: scale(2);
                 opacity: 0;
             }
+        }
+
+        /* Фоновая анимация */
+        .bg-circuit {
+            position: absolute;
+            background: rgba(0, 255, 0, 0.2);
+            border: 1px solid #00ff00;
+            border-radius: 2px;
+            z-index: 1;
+            animation: moveCircuit 10s linear infinite;
+        }
+
+        @keyframes moveCircuit {
+            from { transform: translateY(-100px) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Отключаем стандартный курсор */
+        body {
+            cursor: none;
+        }
+
+        /* Позиционирование фона */
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1 style="font-size: 2em;">Добро пожаловать на мой сайт!</h1>
-    <nav>
-        <a href="#about">Обо мне</a>
-        <a href="#skills">Навыки</a>
-        <a href="#projects">Проекты</a>
-        <a href="#contact">Контакты</a>
-    </nav>
-</header>
+    <!-- Фоновая анимация -->
+    <div id="background"></div>
 
-<section id="about">
-    <h2>Обо мне</h2>
-    <p>Привет! Меня зовут Хамраев Артур. Я начинающий программист, и я изучал программирование, начиная с HTML, CSS и JavaScript. Я использовал все эти технологии для создания веб-сайтов и приложений. В моих проектах я стремлюсь применять лучшие практики и создавать качественный код.</p>
-</section>
+    <header>
+        <h1>Добро пожаловать на мой сайт!</h1>
+        <nav>
+            <a href="#about">Обо мне</a>
+            <a href="#skills">Навыки</a>
+            <a href="#projects">Проекты</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </header>
 
-<section id="skills">
-    <h2>Навыки</h2>
-    <ul>
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>JavaScript</li>
-        <li>Основы веб-дизайна</li>
-        <li>Unity (C#)</li>
-        <li>Python</li>
-    </ul>
-</section>
+    <section id="about">
+        <h2>Обо мне</h2>
+        <p>Привет! Меня зовут Хамраев Артур. Я начинающий программист, и я изучал программирование, начиная с HTML, CSS и JavaScript. Я использовал все эти технологии для создания веб-сайтов и приложений. В моих проектах я стремлюсь применять лучшие практики и создавать качественный код.</p>
+    </section>
 
-<section id="projects">
-    <h2>Проекты</h2>
-    <p>Я работал над несколькими проектами, включая:</p>
-    <ul>
-        <li>Личный сайт (как этот!)</li>
-        <li>Веб-приложение для заметок</li>
-        <li>Игры на JavaScript</li>
-        <li>Игры на Unity</li>
-        <li>Игры и программы и боты на Python</li>
-    </ul>
-</section>
+    <section id="skills">
+        <h2>Навыки</h2>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>Основы веб-дизайна</li>
+            <li>Unity (C#)</li>
+            <li>Python</li>
+        </ul>
+    </section>
 
-<section id="contact">
-    <h2>Контакты</h2>
-    <p>Вы можете связаться со мной через социальные сети:</p>
-    <div class="social-links">
-        <a href="https://discord.gg/RyvQ6aSgc7" target="_blank">
-            <img src="https://img.icons8.com/?size=512&id=30998&format=png" alt="Discord">
-        </a>
-        <a href="https://t.me/Deadly_Place" target="_blank">
-            <img src="https://pngicon.ru/file/uploads/telegram.png" alt="Telegram">
-        </a>
-        <a href="https://www.youtube.com/@Deadly-Place" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-        </a>
-    </div>
-</section>
+    <section id="projects">
+        <h2>Проекты</h2>
+        <p>Я работал над несколькими проектами, включая:</p>
+        <ul>
+            <li>Личный сайт (как этот!)</li>
+            <li>Веб-приложение для заметок</li>
+            <li>Игры на JavaScript</li>
+            <li>Игры на Unity</li>
+            <li>Игры, программы и боты на Python</li>
+        </ul>
+    </section>
 
-<footer>
-    <p>© 2024 Хамраев Артур. Все права защищены.</p>
-</footer>
+    <section id="contact">
+        <h2>Контакты</h2>
+        <p>Вы можете связаться со мной через социальные сети:</p>
+        <div class="social-links">
+            <a href="https://discord.gg/RyvQ6aSgc7" target="_blank">
+                <img src="https://img.icons8.com/?size=512&id=30998&format=png" alt="Discord">
+            </a>
+            <a href="https://t.me/Deadly_Place" target="_blank">
+                <img src="https://pngicon.ru/file/uploads/telegram.png" alt="Telegram">
+            </a>
+            <a href="https://www.youtube.com/@Deadly-Place" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+            </a>
+        </div>
+    </section>
 
-<div id="cursor"></div>
+    <footer>
+        <p>© 2024 Хамраев Артур. Все права защищены.</p>
+    </footer>
 
-<script>
-    const cursor = document.getElementById('cursor');
+    <!-- Кастомный курсор -->
+    <div class="custom-cursor" id="customCursor"></div>
 
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.pageX + 'px';
-        cursor.style.top = e.pageY + 'px';
+    <script>
+        // Кастомный курсор и следы
+        const cursor = document.getElementById('customCursor');
 
-        // Создаем след
-        const trail = document.createElement('div');
-        trail.className = 'trail';
-        document.body.appendChild(trail);
-        trail.style.left = e.pageX + 'px';
-        trail.style.top = e.pageY + 'px';
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
 
-        // Удаляем след через 0.5 секунды
-        setTimeout(() => {
-            trail.remove();
-        }, 500);
-    });
+            // Создаем след
+            const trail = document.createElement('div');
+            trail.classList.add('trail');
+            trail.style.left = `${e.clientX}px`;
+            trail.style.top = `${e.clientY}px`;
+            document.body.appendChild(trail);
 
-    // Прятать стандартный курсор
-    document.body.style.cursor = 'none';
+            // Удаляем след через 0.5 секунды
+            setTimeout(() => {
+                trail.remove();
+            }, 500);
+        });
 
-    // Анимация фоновых элементов
-    const bgElements = [];
-    const createBgElement = (x, y) => {
-        const bgElement = document.createElement('div');
-        bgElement.className = 'bg-element';
-        bgElement.style.position = 'absolute';
-        bgElement.style.width = '10px';
-        bgElement.style.height = '10px';
-        bgElement.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
-        bgElement.style.borderRadius = '50%';
-        bgElement.style.left = `${x}px`;
-        bgElement.style.top = `${y}px`;
-        document.body.appendChild(bgElement);
-        bgElements.push(bgElement);
+        // Фоновая анимация: создание "биосхем"
+        const background = document.getElementById('background');
 
-        // Движение к курсору
-        const moveToCursor = () => {
-            const mouseX = cursor.offsetLeft + cursor.offsetWidth / 2;
-            const mouseY = cursor.offsetTop + cursor.offsetHeight / 2;
+        function createCircuit() {
+            const circuit = document.createElement('div');
+            circuit.classList.add('bg-circuit');
+            const size = Math.random() * 20 + 10; // Размер элемента
+            circuit.style.width = `${size}px`;
+            circuit.style.height = `${size}px`;
+            circuit.style.left = `${Math.random() * window.innerWidth}px`;
+            circuit.style.top = `${-size}px`;
+            circuit.style.opacity = Math.random();
 
-            const dx = mouseX - parseInt(bgElement.style.left);
-            const dy = mouseY - parseInt(bgElement.style.top);
-            const dist = Math.sqrt(dx * dx + dy * dy);
+            background.appendChild(circuit);
 
-            if (dist < 50) {
-                bgElement.style.left = parseInt(bgElement.style.left) + (dx / dist) * 5 + 'px';
-                bgElement.style.top = parseInt(bgElement.style.top) + (dy / dist) * 5 + 'px';
-            }
+            // Удаляем элемент после завершения анимации
+            circuit.addEventListener('animationend', () => {
+                circuit.remove();
+            });
+        }
 
-            requestAnimationFrame(moveToCursor);
-        };
-        moveToCursor();
+        // Создаем элементы фона с интервалом
+        setInterval(createCircuit, 200);
 
-        // Удаляем элемент через 3 секунды
-        setTimeout(() => {
-            bgElement.remove();
-        }, 3000);
-    };
+        // Анимация взаимодействия фона с курсором
+        document.addEventListener('mousemove', (e) => {
+            const circuits = document.querySelectorAll('.bg-circuit');
+            circuits.forEach(circuit => {
+                const rect = circuit.getBoundingClientRect();
+                const distance = Math.hypot(e.clientX - rect.left, e.clientY - rect.top);
+                if (distance < 50) {
+                    circuit.style.background = 'rgba(255, 0, 255, 0.7)';
+                } else {
+                    circuit.style.background = 'rgba(0, 255, 0, 0.2)';
+                }
+            });
+        });
 
-    // Создание элементов фона
-    setInterval(() => {
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
-        createBgElement(x, y);
-    }, 1000);
-</script>
+        // Анимация печатания текста уже реализована через CSS
 
+    </script>
 </body>
 </html>
